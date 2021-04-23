@@ -1,4 +1,4 @@
 # Java
 Java Study
 
-2021. 04. 23.
+2021/04/23 start
