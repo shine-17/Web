@@ -1,0 +1,38 @@
+#형변환
+char
+- character 약어로 숫자 0 ~ 9, 알바벳의 대소문자 한 글자를 표현 하는 자료형
+- 8bit 에 해당하는 문자
+- 자바에서 인코딩 방식이 유니코드로 2byte
+String
+- 그런 문자들의 집합
+- 자바에서 실제 char배열을 할당받음
+
+char <-> String
+
+1. valueOf
+char c = 'a';
+String str = String.valueOf(c);
+
+char[] arrCh = {'a', 'b', 'c' };
+String str = String.valueOf(arrCh); (char배열)
+
+2. toString
+char c = 'a';
+String str = Character.toString(c);
+
+3. +""
+char c = 'a';
+String str = ch + "";
+
+3번은 편하지만 속도는 월등히 느리다. 추천X
+
+#문자열자르기
+
+substring
+- String.substring(start) //문자열  start위치부터 끝까지 문자열 자르기
+- String.substring(start,end) //문자열  start위치 부터 end전까지 문자열 발췌
+
+split
+String[] strArr = str.split("기준문자");
+"1,2,3,4" 이런 문자열을 특정문자를 기준으로 끊어서 배열에 저장해준다. 활용도가 높다.
+return - 배열
