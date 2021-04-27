@@ -37,6 +37,40 @@ String[] strArr = str.split("기준문자");
 "1,2,3,4" 이런 문자열을 특정문자를 기준으로 끊어서 배열에 저장해준다. 활용도가 높다.
 return - 배열
 
-#어노테이션(Annotation) @
+#어노테이션(Annotation)
+- 메타데이터(metadata) 즉 컴파일 과정과 실행 과정에서 코드를 어떻게 컴파일하고 처리할 것인지를 알려주는 정보이다.
+- Anonotation으로 인해 데이터의 유효성 검사 등을 쉽게 알 수 있고, 이와 관련한 코드가 깔끔해지게 된다.
+- Anonotation의 용도는 다양한 목적이 있지만 메타 데이터의 비중이 가장 크다 할 수 있습니다
+- @Override 이런식으로 사용
+
+@Transactional
+스프링은 코드 기반의 트랜잭션 처리(Programmatic Transaction) 뿐만 아니라 선언적 트랜잭션(Declarative Transaction)을 지원하고 있다.
+선언적 트랜잭션
+- 선언적 트랜잭션은 설정 파일이나 어노테이션을 이용해서 트랜잭션의 범위, 롤백 규칙 등을 정의
+  1. <tx:advice> 태그를 이용한 트랜잭션 처리
+  2. @Transactional 어노테이션을 이용한 트랜잭션 설정
+  
+클래스, 메서드 위에 @Transactional이 추가되면 이 클래스에 트랜잭션 기능이 적용된 프록시 객체가 생성된다.
+이 프록시 객체는 @Transactional이 포함된 메서드가 호출될 경우, PlatformTransactionManager를 사용하여 트랜잭션을 시작하고 정상 여부에 따라 Commit 또는 Rollback 한다.
+
+@Transactional을 써주는 이유?
+예를 들어
+footballDAO.insertCoach()에서 처리한 쿼리문이 정상적으로 완료가 되고
+footballDAO.insertPlayer()에서 처리 도중 에러가 났을 때 insertCoach()에서 처리한 쿼리를 자동 Rollback 해주기 위해 사용된다.
+만약 @Transactional을 사용하지 않는다면,
+insertCoach()의 쿼리는 정상적으로 완료되어 테이블에 데이터가 저장되 insertPlayer()에서는 데이터가 저장되지 않았기 때문에
+데이터의 부정합이 발생하여 다시 원상복구해야하기 때문!
+
+
+- 트랜잭션(Transaction)
+  데이터베이스의 상태를 변환시키는 하나의 논리적 기능을 수행하기 위한 작업의 단위 또는 한꺼번에 모두 수행되어야 할 일련의 연산들
+  ▶ 원자성(Atomicity)
+  - 한 트랜잭션 내에서 실행한 작업들은 하나로 간주한다. 즉, 모두 성공 또는 모두 실패. 
+  ▶ 일관성(Consistency)
+  - 트랜잭션은 일관성 있는 데이타베이스 상태를 유지한다. (data integrity 만족 등.)
+  ▶ 격리성(Isolation)
+  - 동시에 실행되는 트랜잭션들이 서로 영향을 미치지 않도록 격리해야한다.
+  ▶ 지속성(Durability)
+  - 트랜잭션을 성공적으로 마치면 결과가 항상 저장되어야 한다.
 
 
