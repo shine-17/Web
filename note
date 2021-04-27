@@ -36,3 +36,7 @@ split
 String[] strArr = str.split("기준문자");
 "1,2,3,4" 이런 문자열을 특정문자를 기준으로 끊어서 배열에 저장해준다. 활용도가 높다.
 return - 배열
+
+#어노테이션(Annotation) @
+
+
