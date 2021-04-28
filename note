@@ -73,4 +73,10 @@ insertCoach()의 쿼리는 정상적으로 완료되어 테이블에 데이터�
   ▶ 지속성(Durability)
   - 트랜잭션을 성공적으로 마치면 결과가 항상 저장되어야 한다.
 
+#SimpleDateFormat
+
+SimpleDateFormat format = new SimpleDateFormat();
+시간(24h),분 : hh:mm / HH:mm (24h 일경우 대문자)
+
+
 
