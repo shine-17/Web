@@ -1,2 +1,2 @@
-# Java
-Java Study
+# Web
+Web Study
