@@ -1,2 +1,2 @@
-# Web
-Web Study
+# 1. DRY 
+### Don't Repeat Yourself
