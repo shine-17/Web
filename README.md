@@ -1,14 +1,14 @@
 # 좋은 코드 만드는 습관
 ## DRY
-### Don't Repeat Yourself
+#### Don't Repeat Yourself
 코드나 기능, 로직을 반복하지 말자!
 
 ## KISS
-### Keep It Simple, Stupid
+#### Keep It Simple, Stupid
 심플하고, 멍청하게 유지하자!
 
 ## YAGNI
-### You Ain't Gonna Need It
+#### You Ain't Gonna Need It
 필요하지 않는 기능 X
 사용하지 않는 기능 X
 지나치게 미래지향적 X
