@@ -1,2 +1,2 @@
-# **DRY**
+# __DRY__
 ### Don't Repeat Yourself
