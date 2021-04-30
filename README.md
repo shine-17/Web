@@ -1,2 +1,2 @@
-  # 1. DRY 
+# *DRY *
 ### Don't Repeat Yourself
