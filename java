@@ -81,3 +81,37 @@ SimpleDateFormat format = new SimpleDateFormat();
 
 
 
+```java
+package Baekjoon;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
+public class Baekjoon11399 {
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int n= Integer.parseInt(br.readLine());
+		String arr = br.readLine();
+		String pArr[] = new String[n];
+		int sum=0;
+		int[] p = new int[n];
+		
+		pArr = arr.split(" ");
+		for(int i=0; i<pArr.length; i++) {
+			p[i] = Integer.parseInt(pArr[i]);
+		}
+			
+		Arrays.sort(p);
+		
+		for(int i=0; i<p.length; i++) {
+			for(int j=0; j<=i; j++) {
+				sum += p[j];
+			}
+		}
+		System.out.println(sum);
+		
+	}
+}
+```
