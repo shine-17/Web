@@ -79,3 +79,11 @@ SimpleDateFormat format = new SimpleDateFormat();
 시간(24h),분 : hh:mm / HH:mm (24h 일경우 대문자)
 
 Local 클래스
+produces = "application/json;charset=UTF-8"
+@RequestMapping
+@ResponseBody
+HttpSession session
+HttpServletRequest request
+HttpServletResponse response
+AjaxResult
+JsonArray
