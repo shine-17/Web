@@ -87,3 +87,4 @@ HttpServletRequest request
 HttpServletResponse response
 AjaxResult
 JsonArray
+StringRedisTemplate
