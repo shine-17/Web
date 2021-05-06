@@ -1,0 +1,110 @@
+// 환경설정 - Config 수집 설정 추가
+    @RequestMapping(value="/addCollectSettingData",produces = "application/json;charset=UTF-8",method = RequestMethod.POST)
+    @ResponseBody
+    public Object addCollectSettingData(Locale locale, HttpSession session, HttpServletRequest request, HttpServletResponse response ) {
+    	logger.info("ConfigurationDataController.java addCollectSettingData.", locale);
+    	
+    	AjaxResult result = new AjaxResult();
+		String jsonData = null;
+		JsonArray addArray = null;
+        int iResult = 0;
+    	
+        try {
+        	
+            // Check login
+            LoginInfo loginInfo = SessionHelper.getInstance().getLoginInfo(session, redisTemplate);
+            if (loginInfo == null) {
+                result.setSuccess(false);
+                result.setErrorMessage("session_closed");
+                return gson.toJson(result);
+            }
+
+            
+//            String authority = indexDAOImpl.getMenuAuthority(loginInfo.user_id, "smssetting");
+//            // Check authority (Read or Write)
+//            if (authority == null) {
+//                result.setSuccess(false);
+//                result.setErrorMessage("unauthorized_access");
+//                return gson.toJson(result);
+//            }
+            
+            if (request.getParameter("addData") != null){
+                String encode1 = EncryptHelper.getInstance().encryptAES128(request.getParameter("addData"));
+                String jData1 = EncryptHelper.getInstance().decryptAES128(encode1);
+                addArray = new Gson().fromJson(jData1, JsonArray.class);
+			}
+            
+			for (JsonElement element : addArray) {
+                JsonObject jsonObj = element.getAsJsonObject();
+                ConfigCollectSetting configCollectSetting = new ConfigCollectSetting();
+                String periodType = "";
+                
+                if (jsonObj.get("setup_name") != null)
+                	configCollectSetting.setSetup_name(jsonObj.get("setup_name").toString().replaceAll("\"", ""));
+                if (jsonObj.get("ip_start") != null)
+                	configCollectSetting.setIp_start(jsonObj.get("ip_start").toString().replaceAll("\"", ""));
+            	if (jsonObj.get("ip_end") != null)
+            		configCollectSetting.setIp_end(jsonObj.get("ip_end").toString().replaceAll("\"", ""));
+            	if (jsonObj.get("class_1") != null)
+            		configCollectSetting.setClass_1(jsonObj.get("class_1").toString().replaceAll("\"", ""));
+            	if (jsonObj.get("class_2") != null)
+            		configCollectSetting.setClass_2(jsonObj.get("class_2").toString().replaceAll("\"", ""));
+            	if (jsonObj.get("class_3") != null)
+            		configCollectSetting.setClass_3(jsonObj.get("class_3").toString().replaceAll("\"", ""));
+            	if (jsonObj.get("class_4") != null)
+            		configCollectSetting.setClass_4(jsonObj.get("class_4").toString().replaceAll("\"", ""));
+            	if (jsonObj.get("is_enable") != null)
+            		configCollectSetting.setIs_enable(Integer.parseInt(jsonObj.get("is_enable").toString().replaceAll("\"", "")));
+            	if (jsonObj.get("cmd_group_id") != null)
+            		configCollectSetting.setCmd_group_id(Integer.parseInt(jsonObj.get("cmd_group_id").toString().replaceAll("\"", "")));
+            	if (jsonObj.get("period_type") != null)
+            		periodType = jsonObj.get("period_type").toString().replaceAll("\"", "");
+            		configCollectSetting.setPeriod_type(jsonObj.get("period_type").toString().replaceAll("\"", ""));
+            		
+            	if(periodType.equals("DAILY")) {
+                	configCollectSetting.setCol_day(null);
+                	configCollectSetting.setCol_dayofweek(null);
+            	}
+            	else if(periodType.equals("WEEKLY")) {
+            		configCollectSetting.setCol_day(null);
+            		
+            		if (jsonObj.get("col_dayofweek") != null)
+                		configCollectSetting.setCol_dayofweek(jsonObj.get("col_dayofweek").toString().replaceAll("\"", ""));
+            	}
+            	else if(periodType.equals("MONTHLY")) {
+            		configCollectSetting.setCol_dayofweek(null);
+            		
+            		if (jsonObj.get("col_monthlyDate") != null)
+                		configCollectSetting.setCol_day(Integer.parseInt(jsonObj.get("col_monthlyDate").toString().replaceAll("\"", "")));
+            	}
+            	
+            	if (jsonObj.get("col_hour") != null)
+            		configCollectSetting.setCol_hour(jsonObj.get("col_hour").toString().replaceAll("\"", ""));
+                
+                iResult = configurationDAOImpl.insertConfigCollectSetting(configCollectSetting);
+			}
+			
+            
+            if(iResult < 1){
+                result.setSuccess(false);
+             }else if(iResult > 0){
+                result.setSuccess(true);
+
+    			// 사용자 접속 정보 저장
+//    			UserAccessInfo uai = new UserAccessInfo();
+//    			uai.setUserIP(commonHelper.getClientIpAddr(request));
+//    			uai.setSubNameCd("");
+//    			uai.setAction("S");
+//    			uai.setFunctionName("");
+//    			baseDAOImpl.insertUserAccessInfo(request, session, uai);
+             }
+            
+            result.setData(iResult);
+            
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            result.setSuccess(false);
+            result.setErrorMessage(e.getMessage());
+        }
+        return gson.toJson(result);
+    }
