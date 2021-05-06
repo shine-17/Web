@@ -10,8 +10,8 @@ Locale 클래스는 3가지의 생성자를 제공한다
 ```
 Locale locale = new Locale("ko", "KR");
 
-getDisplayLanguage : 한국어
-getLanguage : ko
-getDisplayCountry : 대한민국
-getCountry : KR
+locale.getDisplayLanguage : 한국어
+locale.getLanguage : ko
+locale.getDisplayCountry : 대한민국
+locale.getCountry : KR
  ```
