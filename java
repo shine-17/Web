@@ -78,3 +78,4 @@ insertCoach()의 쿼리는 정상적으로 완료되어 테이블에 데이터�
 SimpleDateFormat format = new SimpleDateFormat();
 시간(24h),분 : hh:mm / HH:mm (24h 일경우 대문자)
 
+Local 클래스
