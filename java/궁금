@@ -1,3 +1,14 @@
+produces = "application/json;charset=UTF-8"
+@RequestMapping
+@ResponseBody
+HttpSession session
+HttpServletRequest request
+HttpServletResponse response
+AjaxResult
+JsonArray
+StringRedisTemplate
+
+
 // 환경설정 - Config 수집 설정 추가
     @RequestMapping(value="/addCollectSettingData",produces = "application/json;charset=UTF-8",method = RequestMethod.POST)
     @ResponseBody
