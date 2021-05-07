@@ -9,6 +9,10 @@ JsonArray
 StringRedisTemplate
 
 
+풀세팅을 원하시면 요즘 많이 하는 RestAPI 같은 이해도 필요하고 모듈화 관련된 이해도 필요하고 프로토콜이랑 데이터포멧의 애하도 필요하빈다.   
+JSON 같은걸 왜 쓰는지 이해하고 있다면 넘어가도 대저. 비동기 제어의 이해도 필요하빈다. HTTP 헤더들에 대한 이해도 필요하고 상태코드에 대한 이해도 필요하저.   
+너무 많겠다 싶겠지만 이게 웹의 시작이빈다.
+
 // 환경설정 - Config 수집 설정 추가
     @RequestMapping(value="/addCollectSettingData",produces = "application/json;charset=UTF-8",method = RequestMethod.POST)
     @ResponseBody
