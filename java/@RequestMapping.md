@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/37826908/117463141-5157fa80-af8a-11eb-85d7-ca0cfb5d40bc.png)
+![image](https://user-images.githubusercontent.com/37826908/117463141-5157fa80-af8a-11eb-85d7-ca0cfb5d40bc.png)   
 @MVC에서 사용하는 주요 어노테이션
 
 ## @RequestMapping
