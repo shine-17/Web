@@ -20,9 +20,9 @@ URL 패턴을 지정하는 속성이다.
 @RequestMapping(value="/post.*")
 @RequestMapping(value="/post/**/comment")
 @RequestMapping(value={"/post", "/P"})
-```java
-String 배열로 여러개를 지정할 수 있으며, ANT 스타일의 와일드카드를 사용할 수 있다.
 ```
+String 배열로 여러개를 지정할 수 있으며, ANT 스타일의 와일드카드를 사용할 수 있다.
+```java
 @RequestMapping(value="/post/{postId}")
 ```
 
