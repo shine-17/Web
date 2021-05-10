@@ -10,7 +10,7 @@ url당 하나의 컨트롤러에 매핑되던 다른 핸들러 매핑과 달리 
 
 ### 간단하게 정리하면, 클라이언트는 URL로 요청을 전송하고, 요청 URL을 어떤 메서드가 처리할지   
 ### 여부를 결정하는 것이 바로 "@RequestMapping" 라고 할 수 있다.   
-
+   
 ![image](https://user-images.githubusercontent.com/37826908/117463306-78aec780-af8a-11eb-83eb-0e76dbaa4836.png)
 
 ### String[] value
