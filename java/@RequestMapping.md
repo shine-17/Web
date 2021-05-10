@@ -21,5 +21,5 @@ URL 패턴을 지정하는 속성이다. String 배열로 여러개를 지정할
 @RequestMapping(value="/post/**/comment")
 @RequestMapping(value={"/post", "/P"})
 ```
-{}를 패스 변수라고 부르며 컨트롤러에서 파라미터로 전달받을 수 있다.   
+<pre>{}</pre>를 패스 변수라고 부르며 컨트롤러에서 파라미터로 전달받을 수 있다.   
 {}를 사용하는 URI 템플릿을 사용할 수도 있다.
