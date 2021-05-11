@@ -14,3 +14,27 @@
 * xml보다 최소한의 용량으로 데이터 전송이 가능하다
    * xml은 HTML과 같이 태그 구조의 형식으로 데이터를 표현하는데 구조가 복잡해지고 용량이 커지기 때문
 * xml보다 구조 정의의 용이성과 가독성이 뛰어나다
+
+#### JSON 구조
+* JSON 데이터는 이름과 값의 쌍으로 이루어져있다
+* JSON 데이터는 쉼표(,)로 나열된다
+* 객체(object)는 중괄호 {}로 둘러쌓아 표현한다
+* 배열(array)은 대괄호 []로 둘러쌓아 표현한다
+```json
+{
+  "employees": [
+    {
+      "name": "Surim",
+      "lastName": "Son"
+    },
+    {
+      "name": "Someone",
+      "lastName": "Huh"
+    },
+    {
+      "name": "Someone else",
+      "lastName": "Kim"
+    } 
+  ]
+}
+```
