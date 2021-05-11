@@ -41,5 +41,17 @@
 
 
 #### JSON의 문제점
-AJAX 는 단순히 데이터만이 아니라 JavaScript 그 자체도 전달할 수 있다. 이 말은 JSON데이터라고 해서 받았는데 단순 데이터가 아니라 JavaScript가 될 수도 있고, 그게 실행 될 수 있다는 것이다. (데이터인 줄 알고 받았는데 악성 스크립트가 될 수 있다.)
+AJAX 는 단순히 데이터만이 아니라 JavaScript 그 자체도 전달할 수 있다. 이 말은 JSON데이터라고 해서 받았는데 단순 데이터가 아니라 JavaScript가 될 수도 있고, 그게 실행 될 수 있다는 것이다. (데이터인 줄 알고 받았는데 악성 스크립트가 될 수 있다.)   
 위와 같은 이유로 받은 내용에서 순수하게 데이터만 추출하기 위한 JSON 관련 라이브러리를 따로 사용하기도 한다.
+
+#### JSON 형식 텍스트를 Javascript Object로 변환
+```javascript
+var jsonText = '{ "name": "Someone else", "lastName": "Kim" }';  // JSON 형식의 문자열
+var realObject = JSON.parse(jsonText);
+var jsonText2 = JSON.stringify(realObject);
+
+console.log(realObject);
+console.log(jsonText2);
+```
+* JSON.parse( JSON으로 변환할 문자열 ) : JSON 형식의 텍스트를 자바스크립트 객체로 변환한다.
+* JSON.stringify( JSON 문자열로 변환할 값 ) : 자바스크립트 객체를 JSON 텍스트로 변환한다.
