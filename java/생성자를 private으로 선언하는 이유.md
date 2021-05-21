@@ -16,4 +16,4 @@ private으로 생성자를 선언하게 되면 인스턴스 생성이 불가능�
 이를 위하여 클래스의 method와 field를 static으로 선언하는 것이다.      
 static으로 선언된 클래스는 인스턴스가 아니라 클래스명 자체로 접근할 수 있기 때문에 인스턴스를 생성하지 않아도 된다.
 
-### 즉 이를 반대로 생각해보면, static method와 static field로 선언된 클래스는 생성자가 private 으로 선언되어 있다는 것을 알 수 있다.
+### 즉 이를 반대로 생각해보면, static method와 static field로 선언된 클래스는 생성자가 private 으로 선언되어 있다는 것을 알 수 있다!
