@@ -26,6 +26,7 @@ HTTP를 이용해서 연결을 수립하며 연결된 이후에도 연결을 할
 웹소켓 연결 요청에는 "Connection:Upgrade"와 "Upgrade:websocket" 헤더를 통해 웹소켓 요청임을 표시한다.   
 또한 "Sec-WebSocket-Key" 헤더를 통해 핸드쉐이크 응답을 검증할 키 값을 보낸다.   
 그 외에도 WebSocket 연결시 보조로 이용할 프로토콜 정보등의 추가적인 정보를 헤더에 담아 보낼 수 있다.   
+
 ![image](https://user-images.githubusercontent.com/37826908/120202769-f2706300-c261-11eb-8661-5e65c76af08f.png)   
 
 웹소켓 연결 요청 예시
