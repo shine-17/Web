@@ -13,3 +13,19 @@
 ### 또한 보완을 강화한 "https"를 사용하는 것처럼
 ### "ws"에 대해 보완을 강화한 "wss"를 사용할 수 있다.
 <hr/>
+
+HTTP를 이용해서 연결을 수립하며 연결된 이후에도 연결을 할 때 사용했던 포트인 80과 433포트를 이용한다.   
+연결 수립은 핸드쉐이크를 통해 이루어지며 핸드쉐이크시 HTTP를 이용한다.
+
+![image](https://user-images.githubusercontent.com/37826908/120201182-1c288a80-c260-11eb-81b6-9faebe66a8ed.png)   
+
+핸드쉐이크는 한번의 HTTp 요청과 HTTP 응답으로 이루어진다.   
+핸드쉐이크가 끝나면 HTTP 프로토콜을 웹소켓 프로토콜로 변환하여 통신을 하는 구조이다.   
+   
+핸드쉐이크는 먼저 클라이언트가 HTTP로 웹소켓 연결 요청을 하면서 시작되고,   
+웹소켓 연결 요청에는 "Connection:Upgrade"와 "Upgrade:websocket" 헤더를 통해 웹소켓 요청임을 표시한다.   
+또한 "Sec-WebSocket-Key" 헤더를 통해 핸드쉐이크 응답을 검증할 키 값을 보낸다.   
+그 외에도 WebSocket 연결시 보조로 이용할 프로토콜 정보등의 추가적인 정보를 헤더에 담아 보낼 수 있다.
+![image](https://user-images.githubusercontent.com/37826908/120202769-f2706300-c261-11eb-8661-5e65c76af08f.png)   
+
+웹소켓 연결 요청 예시
