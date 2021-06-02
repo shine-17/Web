@@ -11,6 +11,8 @@ SQL실행계획 (쿼리공부좀 많이해야함...)
 RedisTemplate
 Redis DB
 
+세션, 쿠키
+
 자바스크립트 객체 속성 접근 . vs []  차이
 https://medium.com/sjk5766/javascript-object-key-vs-object-key-%EC%B0%A8%EC%9D%B4-3c21eb49b763
 
