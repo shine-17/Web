@@ -11,6 +11,7 @@ SQL실행계획 (쿼리공부좀 많이해야함...)
 RedisTemplate
 Redis DB
 
+Handler, thread
 세션
 https://88240.tistory.com/190
 https://jeong-pro.tistory.com/80
