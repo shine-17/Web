@@ -11,6 +11,8 @@ SQL실행계획 (쿼리공부좀 많이해야함...)
 RedisTemplate
 Redis DB
 
+MyBatis에서 특수문자 쓸땐 CDATA
+
 개인프로젝트 제작과정
 https://okky.kr/article/958289
 
