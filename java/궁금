@@ -20,8 +20,9 @@ getInstance(), 동기화
 https://hoon2kc.tistory.com/entry/getInstance-%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80
 
 Handler, thread
+웹소켓
 
-세션
+세션, 웹소켓세션
 https://88240.tistory.com/190
 https://jeong-pro.tistory.com/80
 https://medium.com/@icehongssii/%EA%B9%9C%EC%B0%8D%ED%95%9C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EB%93%A4%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B0%84%EB%8B%A8%ED%95%9C-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%83%81%EC%8B%9D-2-2-http%EB%A5%BC-%EB%84%98%EC%96%B4%EC%84%9C-%EC%8B%A4%EC%8B%9C%EA%B0%84-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%82%B9websocket-c49125e1b5a0
