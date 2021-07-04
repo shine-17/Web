@@ -23,7 +23,7 @@ Handler, thread
 웹소켓 (채팅 프로그램)
 
 $(자바스크립트 객체) == jQuery 객체
-변환이된다!!! 
+변환이된다!!
 
 자바 Collections 동시성문제
 ConcurrentModificationException 예외발생
