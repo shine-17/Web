@@ -22,6 +22,9 @@ https://hoon2kc.tistory.com/entry/getInstance-%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D
 Handler, thread
 웹소켓 (채팅 프로그램)
 
+세션클러스터링, 로드밸런싱
+https://junshock5.tistory.com/91
+
 $(자바스크립트 객체) == jQuery 객체
 변환이된다!!
 
