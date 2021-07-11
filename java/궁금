@@ -30,7 +30,7 @@ https://okky.kr/article/958289
 getInstance(), 동기화
 https://hoon2kc.tistory.com/entry/getInstance-%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80
 
-Handler, thread  
+Handler, thread
 웹소켓 (채팅 프로그램)
 
 세션클러스터링,로드밸런싱 
