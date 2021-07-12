@@ -1,4 +1,3 @@
-```java
 package com.rtnet.eyas.handler;
  
 import java.util.ArrayList;
@@ -337,4 +336,3 @@ public class MainWebSocketHandler extends TextWebSocketHandler {
 		return filterFlag;
 	}
 }
-```
