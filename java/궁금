@@ -25,6 +25,9 @@ https://blog.naver.com/miracle_blossom/222401073323
 디자인 패턴
 https://gmlwjd9405.github.io/2018/07/13/template-method-pattern.html
 
+동기: 이것좀 해줘. 끝날때기 기다리께.
+비동기: 이것좀 해줘. 나 다른거 하고있을테니 다되면 알려줘.
+
 MyBatis에서 특수문자 쓸땐 CDATA
 
 개인프로젝트 제작과정
