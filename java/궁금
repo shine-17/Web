@@ -28,6 +28,9 @@ https://gmlwjd9405.github.io/2018/07/13/template-method-pattern.html
 동기: 이것좀 해줘. 끝날때기 기다리께.
 비동기: 이것좀 해줘. 나 다른거 하고있을테니 다되면 알려줘.
 
+요소의 title 속성 짤림현상 (띄어쓰기)
+https://java119.tistory.com/84
+
 MyBatis에서 특수문자 쓸땐 CDATA
 
 개인프로젝트 제작과정
