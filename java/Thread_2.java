@@ -1,3 +1,6 @@
+Thread safe하지 않은 클래스들, 스레드 작업 로직의 구조문제, 일부만 동기화한 문제, 동적으로도 구현
+
+
 package app;
 
 import java.io.IOException;
