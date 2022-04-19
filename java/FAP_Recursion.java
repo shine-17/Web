@@ -1,58 +1,65 @@
 package Task;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Collections;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.zip.CRC32;
 import java.util.zip.CheckedInputStream;
 
 public class FileSearch {
 	private static HashMap<File, Object> fileMap = new HashMap<File, Object>();
+	private static BufferedReader br;
+	private static Iterator<File> iter;
 
 	public static void main(String[] args) throws IOException {
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		br = new BufferedReader(new InputStreamReader(System.in));
 		
 		String filePath = "C:\\fap\\";
 		searchFile(filePath); //최초 전체파일 탐색 후 CRC값 저장
 		
 //		String filePath_1 = br.readLine();
 		
-		System.out.println("---------------------");
-		
-		Iterator<File> iter = fileMap.keySet().iterator();
+		changeFileData();
+		iter = fileMap.keySet().iterator();
+		int nochange = 0, update = 0, delete = 0;
 		
 		while(iter.hasNext()) {
 			File item = iter.next();
-//			System.out.println(item.getPath() + " : " + fileMap.get(item));
-			
 			long crcValue = getFileCRC32(item.getPath());
 			
-//			System.out.println(item.getPath());
-			System.out.println(crcValue);
-			
-//			System.out.println(item.getName() + " : " + fileMap.get(item));
-//			System.out.println(item.getName() + " : " + crcValue);
+			StringBuilder sb = new StringBuilder();
+			sb.append(item.getName() + " is ");
 			
 			if((long)fileMap.get(item) == crcValue) {
-//				System.out.println(item.getName() + " : 이상없음");
+				sb.append("no change");
+				nochange++;
 			} else if((long)fileMap.get(item) != crcValue) {
-//				System.out.println("수정");
+				sb.append("update");
+				update++;
 			} else {
-//				System.out.println("삭제");
+				sb.append("delete");
+				delete++;
 			}
 				
+			sb.append(" --- before : " + fileMap.get(item) + " / after : " + crcValue);
+			System.out.println(sb);
 		}
 		
-		
-		
+		System.out.println("------------------------------");
+		System.out.println("no change : " + nochange);
+		System.out.println("update : " + update);
+		System.out.println("delete : " + delete);
+		System.out.println("------------------------------");
 	}
 	
 	// 재귀
@@ -63,7 +70,6 @@ public class FileSearch {
 		for(int i=0; i<fList.length; i++) {
 			if(fList[i].isFile()) { // 상위 File
 				long crcValue = getFileCRC32(fList[i].getPath());
-				System.out.println(crcValue);
 				fileMap.put(fList[i], crcValue);
 			} else if(fList[i].isDirectory()) { // 디렉토리 하위 File
 				searchFile(fList[i].getPath());
@@ -71,6 +77,7 @@ public class FileSearch {
 		}
 	}
 	
+	// 파일 CRC 값
 	private static long getFileCRC32(String filePath) throws IOException {
 		long crcValue = -1;   
 	    CRC32 crc32 = new CRC32();   
@@ -79,13 +86,13 @@ public class FileSearch {
 	    try {
 	    	in = new CheckedInputStream(new FileInputStream(filePath), crc32);
 	    	
-			while (in.read() != -1)
+			while (in.read() != -1);
 				crcValue = crc32.getValue();
-		} catch (FileNotFoundException e) {   
-	        System.err.println("CheckedIODemo: " + e);   
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 	        System.exit(-1);   
 	    } catch (IOException e) {   
-	        System.err.println("CheckedIODemo: " + e);   
+	    	e.printStackTrace();
 	        System.exit(-1);   
 	    } finally {
 	        if(in != null) {
@@ -94,6 +101,37 @@ public class FileSearch {
 	    }
 		
 		return crcValue;
+	}
+	
+	private static void changeFileData() throws IOException {
+		ArrayList<String> randomList = new ArrayList<String>();
+		iter = fileMap.keySet().iterator();
+		
+		while(iter.hasNext()) {
+			randomList.add(iter.next().getPath());
+		}
+		
+		for(int i=0; i<3; i++) {
+			int random = (int) ((Math.random() * 120) / 10);
+			String path = randomList.get(random);
+			
+			br = Files.newBufferedReader(Paths.get(path));
+			String line = br.readLine();
+			System.out.println(path + " : " + line);
+			
+			if(line == null) {
+				line = "0";
+			} else if(Integer.parseInt(line) < 100) {
+				line = String.valueOf(Integer.parseInt(line) + 100);
+			} else {
+				line = String.valueOf(Integer.parseInt(line) - 100);
+			}
+			
+			BufferedWriter bw = Files.newBufferedWriter(Paths.get(path),Charset.forName("UTF-8"));
+			bw.write(line);
+			bw.close();
+		}
+		
 	}
 
 }
