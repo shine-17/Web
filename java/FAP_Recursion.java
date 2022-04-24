@@ -24,12 +24,14 @@ public class FileSearch {
 	public static void main(String[] args) throws IOException {
 		br = new BufferedReader(new InputStreamReader(System.in));
 		
-		String filePath = "C:\\fap\\";
+		long before = System.currentTimeMillis();
+//		String filePath = "C:\\fap\\";
+		String filePath = "C:\\BMJ\\webfonts";
 		searchFile(filePath); //최초 전체파일 탐색 후 CRC값 저장
 		
 //		String filePath_1 = br.readLine();
 		
-		changeFileData();
+//		changeFileData();
 		iter = fileMap.keySet().iterator();
 		int nochange = 0, update = 0, delete = 0;
 		
@@ -51,7 +53,7 @@ public class FileSearch {
 				delete++;
 			}
 				
-			sb.append(" --- before : " + fileMap.get(item) + " / after : " + crcValue);
+			sb.append(" [ before : " + fileMap.get(item) + " ] [ after : " + crcValue + " ] ");
 			System.out.println(sb);
 		}
 		
@@ -60,6 +62,8 @@ public class FileSearch {
 		System.out.println("update : " + update);
 		System.out.println("delete : " + delete);
 		System.out.println("------------------------------");
+		
+		System.out.println("sec : " + (System.currentTimeMillis() - before));
 	}
 	
 	// 재귀
