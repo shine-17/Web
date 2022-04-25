@@ -1,5 +1,6 @@
 package Task;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,7 +27,7 @@ public class FileSearch {
 		
 		long before = System.currentTimeMillis();
 //		String filePath = "C:\\fap\\";
-		String filePath = "C:\\BMJ\\webfonts";
+		String filePath = "C:\\BMJ\\sqldeveloper";
 		searchFile(filePath); //최초 전체파일 탐색 후 CRC값 저장
 		
 //		String filePath_1 = br.readLine();
@@ -85,13 +86,17 @@ public class FileSearch {
 	private static long getFileCRC32(String filePath) throws IOException {
 		long crcValue = -1;   
 	    CRC32 crc32 = new CRC32();   
-	    CheckedInputStream in = null;
+	    BufferedInputStream in = null;
 	    
 	    try {
-	    	in = new CheckedInputStream(new FileInputStream(filePath), crc32);
+	    	in = new BufferedInputStream(new FileInputStream(filePath));
+	    	byte buffer[] = new byte[32768];
+	    	int length = 0;
 	    	
-			while (in.read() != -1);
-				crcValue = crc32.getValue();
+	    	while ((length = in.read(buffer)) >= 0)
+	    		crc32.update(buffer, 0, length);
+	    	
+			crcValue = crc32.getValue();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 	        System.exit(-1);   
