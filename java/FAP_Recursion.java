@@ -30,9 +30,6 @@ public class FileSearch {
 		String filePath = "C:\\BMJ\\sqldeveloper";
 		searchFile(filePath); //최초 전체파일 탐색 후 CRC값 저장
 		
-//		String filePath_1 = br.readLine();
-		
-//		changeFileData();
 		iter = fileMap.keySet().iterator();
 		int nochange = 0, update = 0, delete = 0;
 		
@@ -96,7 +93,7 @@ public class FileSearch {
 	    	while ((length = in.read(buffer)) >= 0)
 	    		crc32.update(buffer, 0, length);
 	    	
-			crcValue = crc32.getValue();
+		crcValue = crc32.getValue();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 	        System.exit(-1);   
