@@ -11,9 +11,9 @@ import java.util.Iterator;
 import java.util.zip.CRC32;
 
 public class FileCRC32Check {
-	public static HashMap<File, Object> fileMap = new HashMap<File, Object>();
-	public static BufferedReader br;
-	public static Iterator<File> iter;
+	private static HashMap<File, Object> fileMap = new HashMap<File, Object>();
+	private static BufferedReader br;
+	private static Iterator<File> iter;
 	
 	public static FileCRC32Check instance = new FileCRC32Check();
 	
