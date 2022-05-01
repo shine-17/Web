@@ -1,7 +1,6 @@
 package Task;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,15 +11,46 @@ import java.util.zip.CRC32;
 
 public class FileCRC32Check {
 	private static HashMap<File, Object> fileMap = new HashMap<File, Object>();
-	private static BufferedReader br;
 	private static Iterator<File> iter;
 	
-	public static FileCRC32Check instance = new FileCRC32Check();
-	
-	private FileCRC32Check() {
-		throw new AssertionError();
+	public static HashMap<String, Object> getResult(String filePath) throws IOException {
+		HashMap<String, Object> resultMap = new HashMap<String, Object>();
+		
+		// Recursive File Search
+		searchFile(filePath);
+		
+		iter = fileMap.keySet().iterator();
+		int nochange = 0, update = 0, delete = 0;
+		
+		while(iter.hasNext()) {
+			File item = iter.next();
+			long crcValue = getFileCRC32(item.getPath());
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append(item.getName() + " is ");
+			
+			if((long)fileMap.get(item) == crcValue) {
+				sb.append("no change");
+				nochange++;
+			} else if((long)fileMap.get(item) != crcValue) {
+				sb.append("update");
+				update++;
+			} else {
+				sb.append("delete");
+				delete++;
+			}
+				
+			sb.append(" [ before : " + fileMap.get(item) + " ] [ after : " + crcValue + " ] ");
+			//System.out.println(sb);
+		}
+		resultMap.put("nochange", nochange);
+		resultMap.put("update", update);
+		resultMap.put("delete", delete);
+		
+		return resultMap;
 	}
 	
+	// Recursive File Search
 	public static void searchFile(String filePath) throws IOException {
 		File path = new File(filePath);
 		File[] fList = path.listFiles();
@@ -34,7 +64,6 @@ public class FileCRC32Check {
 			}
 		}
 	}
-
 	
 	// 파일 CRC 값
 	public static long getFileCRC32(String filePath) throws IOException {
