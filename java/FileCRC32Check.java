@@ -23,8 +23,7 @@ public class FileCRC32Check {
 			
 			if(after_crcValue == null) {
 				delete++;
-			}
-			else if((long)before_crcValue == (long)after_crcValue) {
+			} else if((long)before_crcValue == (long)after_crcValue) {
 				nochange++;
 			} else if((long)before_crcValue != (long)after_crcValue && (long)after_crcValue > 0) {
 				update++;
